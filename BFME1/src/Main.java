@@ -3,18 +3,15 @@ public class Main {
         Builder builder = new Builder();
         PlayerDirector director = new PlayerDirector();
 
-        // === 1. СОЗДАЕМ АРАГОРНА (Через Директора) ===
         FactionFactory menForge = new MenFactory();
         Pleyer aragorn = director.buildHeroOfLight(builder, menForge);
 
-        System.out.println("=== ВОИНСТВО СВЕТА ===");
+        System.out.println("ВОИНСТВО СВЕТА");
         System.out.println(aragorn);
         aragorn.getWeapon().attack();
         aragorn.getArmor().defend();
 
         System.out.println("\n--------------------\n");
-
-        // === 2. СОЗДАЕМ КОРОЛЯ-ЧАРОДЕЯ (Через Директора) ===
         FactionFactory nazgulForge = new NazgulFactory();
         Pleyer witchKing = director.buildHeroOfEvil(builder, nazgulForge);
 
@@ -24,12 +21,7 @@ public class Main {
         witchKing.getArmor().defend();
 
         System.out.println("\n--------------------\n");
-
-        // === 3. СОЗДАЕМ КАСТОМНОГО ГЕРОЯ (Вручную через Строителя) ===
-        // Берем фабрику эльфов
         FactionFactory elvenForge = new ElvenFactory();
-
-        // Собираем уникального персонажа цепочкой вызовов, минуя Директора
         Pleyer customHero = builder.setName("Леголас")
                 .setAge(2931)
                 .setRacee(Racee.elf) // Используем твой enum Racee
